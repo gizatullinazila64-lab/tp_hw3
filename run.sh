@@ -19,8 +19,7 @@ elif [ "$1" = "structure" ]; then
     ls -R
 
 elif [ "$1" = "clear_data" ]; then
-    rm -f data/*.csv
-    rm -f data/*.html
+    docker run -v "$(pwd)/data:/data" alpine rm -f /data/data.csv /data/report.html
 
 elif [ "$1" = "inside_generator" ]; then
     docker run -v "$(pwd)/data:/data" generator ls /data
